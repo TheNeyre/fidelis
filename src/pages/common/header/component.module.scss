@@ -1,13 +1,55 @@
 .headerContainer {
-
+  font-family: "main";
+  width: 100%;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  .logoContainer {
-    
+  .logo {
+    width: 200px;
+    filter: invert(100%);
+  }
+
+  .header {
+    padding: 0;
+    width: 80%;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 9999px;
+
+    .headerElement {
+      font-family: "main";
+      padding: 10px;
+      color: var(--color-main);
+    }
+    .firstHeaderElement {
+      padding-left: 20px;
+    }
+    .lastHeaderElement {
+      padding-right: 20px;
+      padding-left: 20px;
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      border-radius: 9999px;
+      .lastHeaderElementContent {
+        margin: 0
+      }
+      .contactUsIcon {
+        width: 22px;
+        filter: invert(16%) sepia(100%) saturate(6671%) hue-rotate(229deg) brightness(89%) contrast(98%);
+      }
+    }
   }
 
 }

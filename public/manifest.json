@@ -4,7 +4,7 @@
   "icons": [
     {
       "src": "icons/header.svg",
-      "sizes": "64x128",
+      "sizes": "16x16",
       "type": "image/svg+xml"
     }
   ],
