@@ -1,0 +1,11 @@
+body {
+  background-color: var(--color-main-light);
+}
+* {
+  box-sizing: border-box;
+}
+:root {
+  --color-main: #0340DF;
+  --color-main-light: #336CFF;
+  --color-main-dark: #031F6B;
+}
