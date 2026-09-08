@@ -1,5 +1,20 @@
+import { useEffect } from "react";
 import styles from "./component.module.scss";
 export default function Header () {
+
+  useEffect(()=>{
+
+    const headerScrollControlHandle = () => {
+      const header = document.getElementById("header");
+      window.scrollY?
+      header?.classList.add(styles.scroll):
+      header?.classList.remove(styles.scroll);
+    }
+
+    window.addEventListener("scroll", headerScrollControlHandle)
+
+
+  }, []);
 
   return ( <header id="header" className={styles.headerContainer}>
 

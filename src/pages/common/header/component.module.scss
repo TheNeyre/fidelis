@@ -8,6 +8,7 @@
   justify-content: center;
 
   .logo {
+    animation: none;
     width: 200px;
     filter: invert(100%);
   }
@@ -28,6 +29,7 @@
       font-family: "main";
       padding: 10px;
       color: var(--color-main);
+      cursor: pointer;
     }
     .firstHeaderElement {
       padding-left: 20px;
@@ -52,4 +54,19 @@
     }
   }
 
+  &.scroll {
+    .logo {
+      animation-name: headerScrollAnimations;
+      animation-duration: .5s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+  }
+
+}
+
+@keyframes headerScrollAnimations {
+  0% { opacity: 1; width: 200px;}
+  75% { opacity: 0; width: 0px; }
+  100% { display: none; }
 }
