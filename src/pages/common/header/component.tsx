@@ -4,15 +4,19 @@ export default function Header () {
 
   useEffect(()=>{
 
-    const headerScrollControlHandle = () => {
-      const header = document.getElementById("header");
-      window.scrollY?
-      header?.classList.add(styles.scroll):
-      header?.classList.remove(styles.scroll);
+    const windowResizeHandle = () => {
+      const coefficient = (window.innerWidth/2000) - .15;
+
+
+      Object.assign(document.documentElement, {
+        style: `
+        --background-height-coefficient: ${coefficient};
+        `
+      });
     }
 
-    window.addEventListener("scroll", headerScrollControlHandle)
-
+    window.addEventListener("resize", windowResizeHandle);
+    return () => window.removeEventListener("resize", windowResizeHandle);
 
   }, []);
 

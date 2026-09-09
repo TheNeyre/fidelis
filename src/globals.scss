@@ -1,7 +1,7 @@
 body {
   width: 100vw;
-  background-color: var(--color-main-light);
-  height: 2000px;
+  background-color: white;
+
 }
 
 * {
@@ -9,6 +9,7 @@ body {
 }
 
 :root {
+  --background-height-coefficient: 1;
   --color-main: #0340DF;
   --color-main-light: #336CFF;
   --color-main-dark: #031F6B;
@@ -24,3 +25,8 @@ body {
   src: url("../public/fonts/gothampro_light.ttf");
   font-weight: normal;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
