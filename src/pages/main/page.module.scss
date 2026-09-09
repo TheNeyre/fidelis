@@ -1,22 +1,30 @@
-
-
-
 .background {
   position: absolute;
   pointer-events: none;
-  background: linear-gradient(to top, white, var(--color-main-light));
   top: 0; left: 0;
   width: 100%;
   height: 1200px;
   z-index: -1000;
   overflow: hidden;
-  .backgroundImage {
+  .backgroundLayer {
     position: absolute;
-    right: -20px;
-    mix-blend-mode: hard-light;
-    opacity: calc(0.3 * var(--background-height-coefficient));
+    width: 100vw;
     height: 1200px;
-    width: 1400px;
-
   }
+  .backgroundImage {
+    right: -20px;
+    opacity: calc(1 * var(--background-height-coefficient));
+    width: 1500px;
+  }
+  .backgroundColorGradient {
+    background: linear-gradient(to top, rgba(255, 254, 254, 0.39) calc(60%* (1 - var(--background-height-coefficient))), var(--color-main-background-gradient));
+  }
+  .backgroundBlur {
+    transform: translateY(50px);
+  }
+}
+
+.headerPositionFix {
+  position: absolute;
+  top: 0;
 }

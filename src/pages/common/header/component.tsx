@@ -2,24 +2,6 @@ import { useEffect } from "react";
 import styles from "./component.module.scss";
 export default function Header () {
 
-  useEffect(()=>{
-
-    const windowResizeHandle = () => {
-      const coefficient = (window.innerWidth/2000) - .15;
-
-
-      Object.assign(document.documentElement, {
-        style: `
-        --background-height-coefficient: ${coefficient};
-        `
-      });
-    }
-
-    window.addEventListener("resize", windowResizeHandle);
-    return () => window.removeEventListener("resize", windowResizeHandle);
-
-  }, []);
-
   return ( <header id="header" className={styles.headerContainer}>
 
     <img src="/icons/header.svg" alt="fidelis-header-logo" className={styles.logo}/>

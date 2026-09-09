@@ -1,0 +1,50 @@
+.progressiveLayerBlur {
+
+  pointer-events: none;
+  .blurLayer {
+    position: absolute;
+    width: var(--progressiveBlur-layer-width);
+    height: var(--progressiveBlur-layer-height);
+    transform: translateY(var(--progressiveBlur-layer-y-offset)) translateX(var(--progressiveBlur-layer-x-offset));
+  }
+.blurLayer:nth-child(1) {
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 33%, black 36%, black 40%, transparent 44%);
+  -webkit-mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 33%, black 36%, black 40%, transparent 44%);
+}
+.blurLayer:nth-child(2) {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 36%, black 39%, black 43%, transparent 47%);
+  -webkit-mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 36%, black 39%, black 43%, transparent 47%);
+}
+.blurLayer:nth-child(3) {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 39%, black 42%, black 46%, transparent 50%);
+  -webkit-mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 39%, black 42%, black 46%, transparent 50%);
+}
+.blurLayer:nth-child(4) {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 42%, black 46%, black 50%, transparent 54%);
+  -webkit-mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 42%, black 46%, black 50%, transparent 54%);
+}
+.blurLayer:nth-child(5) {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 45%, black 50%, black 100%);
+  -webkit-mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
+    transparent 45%, black 50%, black 100%);
+}
+}
