@@ -1,4 +1,7 @@
 .headerContainer {
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
   z-index: 1000;
   pointer-events: none;
   font-family: "main";
@@ -8,9 +11,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 
   .logo {
-    animation-name: headerScrollAnimations;
+    animation-name: headerLogoScrollAnimations;
     animation-fill-mode: forwards;
     animation-range: 0px 100px;
     animation-timeline: scroll();
@@ -19,28 +23,57 @@
   }
 
   .header {
+    animation-name: headerScrollAnimations;
+    animation-fill-mode: forwards;
+    animation-range: 0px 100px;
+    animation-timeline: scroll();
+    box-shadow: 0px 5px 5px 0px rgba(0, 31, 131, 0.1);
     padding: 0;
     width: 80%;
     list-style: none;
     display: flex;
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 9999px;
-
+    $headerBeforeElMargin: 5px;
     .headerElement {
+      position: relative;
+      transition: .1s ease all;
       font-family: "main";
       font-size: 18px;
       padding: 16px;
       color: var(--color-main);
       cursor: pointer;
       pointer-events: all;
+      border-radius: 9999px;
+      &::before {
+        content: "";
+        transition: .3s ease all;
+        box-sizing: border-box;
+        position: absolute;
+        width: calc(100% - $headerBeforeElMargin*1.5);
+        height: calc((100% - $headerBeforeElMargin*3));
+        align-self: center;
+        background: #ffffff00;
+        border-radius: 9999px;
+        left: 0;
+        margin: $headerBeforeElMargin;
+        filter: blur(5px);
+      }
+      &:active::before {
+        background: var(--color-main-light-opacity);  
+      }
     }
     .firstHeaderElement {
-      padding-left: 30px;
+      margin-left: 14px;
     }
     .lastHeaderElement {
+      animation-name: headerLastElScrollAnimations;
+      animation-fill-mode: forwards;
+      animation-range: 0px 100px;
+      animation-timeline: scroll();
       padding-right: 20px;
       padding-left: 20px;
       margin-left: auto;
@@ -57,15 +90,48 @@
         width: 22px;
         filter: invert(16%) sepia(100%) saturate(6671%) hue-rotate(229deg) brightness(89%) contrast(98%);
       }
+      &::before {display: none;}
+    }
+    .headerSelector {
+      animation: none;
+      --header-selector-x-offset: 0px;
+      transition: all .3s;
+      position: absolute;
+      left: var(--header-selector-x-offset);
+      height: 3px;
+      width: 50px;
+      background: white;
+      border-radius: 9999px;
+      transform: translateY(60px);
     }
   }
-
 }
 
 @keyframes headerScrollAnimations {
+  100% {
+    margin: 0px;
+    border-radius: 0px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes headerLastElScrollAnimations {
+  100% {
+    border-radius: 0px;
+  }
+}
+
+@keyframes headerLogoScrollAnimations {
   0% { opacity: 1; width: 200px;}
   75% { opacity: 0; }
   100% { width: 0px; }
+}
+@keyframes adaptationVanishAnimation {
+  0% { opacity: 1; }
+  60% { opacity: 0; }
+  100% { display: none; opacity: 0;}
 }
 
 @media screen and (max-width: 800px) {
@@ -73,25 +139,31 @@
     transition: .3s ease all;
     .header {
       width: 90%;
-      justify-content: center;
       transition: .3s ease all;
-      .lastHeaderElement {
-        display: none;
-      }
       .headerElement {
         font-size: 12px;
         padding: 10px;
         transition: .3s ease all;
       }
+      .headerSelector {
+        animation-name: adaptationVanishAnimation;
+        animation-duration: .3s;
+        animation-fill-mode: forwards;
+      }
     }
   }
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 480px) {
   
   .headerContainer {
     
     .header {
+      gap: 10px;
+      justify-content: center;
+      .lastHeaderElement {
+        display: none;
+      }
       .headerElement {
         font-size: 11px;
         padding: 5px;

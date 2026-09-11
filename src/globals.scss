@@ -6,13 +6,16 @@ body {
 
 * {
   box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 :root {
   --background-height-coefficient: 1;
   --color-main: #0340DF;
   --color-main-light: #336CFF;
-  --color-main-background-gradient: #1d5dffb6;
+  --color-main-background-gradient: #1d52ffb6;
+  --color-main-light-opacity: #5e8cff27;
   --color-main-dark: #060607;
 }
 

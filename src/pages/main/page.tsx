@@ -44,14 +44,6 @@ export default function MainPage () {
       </div>
     </div>
     
-    <div className="test" ref={testRef}>
-      <div className="blur">
-        <ProgressiveLayerBlur
-        parentRef={testRef}
-        blurDirection = {"to bottom"}
-        />
-      </div>
-    </div>
 
   </>)
 }
