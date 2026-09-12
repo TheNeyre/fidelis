@@ -70,6 +70,14 @@
       margin-left: 14px;
     }
     .lastHeaderElement {
+      position: relative;
+      transition: .1s ease all;
+      font-family: "main";
+      font-size: 18px;
+      padding: 16px;
+      color: var(--color-main);
+      cursor: pointer;
+      pointer-events: all;
       animation-name: headerLastElScrollAnimations;
       animation-fill-mode: forwards;
       animation-range: 0px 100px;
@@ -93,9 +101,12 @@
       &::before {display: none;}
     }
     .headerSelector {
-      animation: none;
+      animation-name: headerMoverScrollAnimation;
+      animation-fill-mode: forwards;
+      animation-range: 0px 100px;
+      animation-timeline: scroll();
       --header-selector-x-offset: 0px;
-      transition: all .3s;
+      transition: all .2s;
       position: absolute;
       left: var(--header-selector-x-offset);
       height: 3px;
@@ -107,12 +118,13 @@
   }
 }
 
+
 @keyframes headerScrollAnimations {
   100% {
     margin: 0px;
     border-radius: 0px;
     width: 100%;
-    border: none;
+    border-color: #ffffff00;
     box-shadow: none;
   }
 }
@@ -122,33 +134,46 @@
     border-radius: 0px;
   }
 }
-
 @keyframes headerLogoScrollAnimations {
   0% { opacity: 1; width: 200px;}
   75% { opacity: 0; }
   100% { width: 0px; }
 }
-@keyframes adaptationVanishAnimation {
-  0% { opacity: 1; }
-  60% { opacity: 0; }
-  100% { display: none; opacity: 0;}
+@keyframes headerMoverScrollAnimation {
+  100% {
+    transform: translateY(40px);
+    height: 1px;
+    background-color: var(--color-main-light);
+  }
 }
+@keyframes headerMoverScrollAnimationAdapt {
+  100% {
+    transform: translateY(25px);
+    height: 1px;
+    background-color: var(--color-main-light);
+  }
+}
+
 
 @media screen and (max-width: 800px) {
   .headerContainer {
-    transition: .3s ease all;
+    transition: .3s all;
     .header {
       width: 90%;
-      transition: .3s ease all;
+      transition: .3s all;
       .headerElement {
         font-size: 12px;
         padding: 10px;
-        transition: .3s ease all;
+        transition: .3s all;
+      }
+      .lastHeaderElement {
+        font-size: 12px;
+        padding: 10px;
+        transition: .3s all;
       }
       .headerSelector {
-        animation-name: adaptationVanishAnimation;
-        animation-duration: .3s;
-        animation-fill-mode: forwards;
+        transform: translateY(40px);
+        animation-name: headerMoverScrollAnimationAdapt;
       }
     }
   }
@@ -167,7 +192,13 @@
       .headerElement {
         font-size: 11px;
         padding: 5px;
+        padding-top: 9px;
+        padding-bottom: 9px;
         transition: .3s ease all;
+      }
+      .headerSelector {
+        display: none;
+        
       }
     }
   }

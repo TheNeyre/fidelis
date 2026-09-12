@@ -5,7 +5,6 @@
     position: absolute;
     width: var(--progressiveBlur-layer-width);
     height: var(--progressiveBlur-layer-height);
-    transform: translateY(var(--progressiveBlur-layer-y-offset)) translateX(var(--progressiveBlur-layer-x-offset));
   }
 .blurLayer:nth-child(1) {
   backdrop-filter: blur(1px);

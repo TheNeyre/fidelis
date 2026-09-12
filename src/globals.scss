@@ -1,6 +1,6 @@
 body {
   width: 100vw;
-  background-color: white;
+  background-color: rgb(200, 222, 255);
 
 }
 
@@ -14,9 +14,11 @@ body {
   --background-height-coefficient: 1;
   --color-main: #0340DF;
   --color-main-light: #336CFF;
+  --color-main-overlight: #e8efff;
   --color-main-background-gradient: #1d52ffb6;
+  --color-main-dark: #00103a;
   --color-main-light-opacity: #5e8cff27;
-  --color-main-dark: #060607;
+  --color-main-overdark: #060607;
 }
 
 @font-face {

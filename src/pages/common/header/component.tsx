@@ -3,11 +3,17 @@ import { ProgressiveLayerBlur } from "../effects/component";
 import styles from "./component.module.scss";
 export default function Header () {
   const [ windowIsSmall, setWindowIsSmall ] = useState<boolean>(false);
+  const [ lastSelectedSectionIndex, setLastSelectedSectionIndex ] = useState<number|null>(null);
   useEffect(()=>{
+    
     if (window.innerWidth <= 800) setWindowIsSmall(true);
     const headerSections = Array.from(document.querySelectorAll<HTMLLIElement>(`.${styles.headerElement}`));
+
     const updateMoverPosition = (event: MouseEvent|null = null) => {
-      const selectedSection = !event?headerSections[0]:event.currentTarget as HTMLLIElement;
+      const actualHeaderSections = Array.from(document.querySelectorAll<HTMLLIElement>(`.${styles.headerElement}`));
+      const selectedSection = !event?
+      (lastSelectedSectionIndex?actualHeaderSections[lastSelectedSectionIndex]:actualHeaderSections[0])
+      :event.currentTarget as HTMLLIElement;
       const mover = document.querySelector<HTMLDivElement>(`.${styles.headerSelector}`);
       const header = document.querySelector<HTMLUListElement>(`.${styles.header}`)
       if (!selectedSection || !mover || !header) return;
@@ -18,19 +24,27 @@ export default function Header () {
       mover.style.setProperty("width", `${sectionWidth-30}px`);
     }; updateMoverPosition();
 
-    const sectionClickHandle = (event: MouseEvent) => updateMoverPosition(event);
+    const sectionClickHandle = (event: MouseEvent) => {
+      const section = event.currentTarget as HTMLLIElement;
+      setLastSelectedSectionIndex(headerSections.indexOf(section));
+      updateMoverPosition(event);
+    }
+
+    const windowResizeHandle = () => {
+      updateMoverPosition();
+      if (window.innerWidth > 800) setWindowIsSmall(false);
+      else if (window.innerWidth <= 800 && window.innerWidth > 480) setWindowIsSmall(true);
+      else if (window.innerWidth <= 480) setWindowIsSmall(true);
+    };
+    
+    window.addEventListener("resize", windowResizeHandle);
     headerSections.forEach(section => section.addEventListener("click", sectionClickHandle));
-    const windowResizeHandle = () => { 
-      if (window.innerHeight > 800) {
-        if (windowIsSmall) updateMoverPosition();
-        setWindowIsSmall(false);
-      }
-    }; window.addEventListener("resize", windowResizeHandle);
+
     return () => {
       headerSections.forEach(section => section.removeEventListener("click", sectionClickHandle));
       window.removeEventListener("resize", windowResizeHandle);
     }
-  },[]);
+  }, [ lastSelectedSectionIndex, windowIsSmall ] );
 
   const headerRef = useRef<HTMLUListElement>(null);
 
@@ -43,9 +57,10 @@ export default function Header () {
       <li className={styles.headerElement}> {"о нас"} </li>
       <li className={styles.headerElement}> {"ассортимент"} </li>
       <li className={styles.headerElement}> {"контакты"} </li>
-      <li className={`${styles.headerElement} ${styles.lastHeaderElement}`}> <p className={styles.lastHeaderElementContent}>{"связаться"}</p>
+      <li className={` ${styles.lastHeaderElement}`}> <p className={styles.lastHeaderElementContent}>{"связаться"}</p>
       <img src="/icons/arrow-right.svg" alt="contact-us-icon" className={styles.contactUsIcon}/> </li>
       <div className={styles.headerSelector}/>
     </ul>
+
   </header> )
 }

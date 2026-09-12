@@ -6,25 +6,271 @@
   height: 1200px;
   z-index: -1000;
   overflow: hidden;
+
+  .backgroundBlendGroup {
+    isolation: isolate;
+    position: absolute;
+    contain: paint;
+    inset: 0;
+  }
   .backgroundLayer {
     position: absolute;
     width: 100vw;
     height: 1200px;
   }
   .backgroundImage {
+    top: -100px;
     right: -20px;
-    opacity: calc(1 * var(--background-height-coefficient));
+    opacity: calc(1.5 * var(--background-height-coefficient));
     width: 1500px;
+    animation-name: backgroundImageSlideIn;
+    animation-duration: 1s;
+    animation-timing-function: ease;
   }
   .backgroundColorGradient {
-    background: linear-gradient(to top, rgba(255, 254, 254, 0.39) calc(60%* (1 - var(--background-height-coefficient))), var(--color-main-background-gradient));
+    background: linear-gradient(to top, rgba(250, 250, 250, 0.555) calc(60%* (1 - var(--background-height-coefficient))), var(--color-main-background-gradient));
+  }
+  .backgroundSaturationGradient {
+    background: linear-gradient(to top, #fffefe 30%, #016fff48);
+    mix-blend-mode: saturation;
   }
   .backgroundBlur {
-    transform: translateY(50px);
+    top: 50px;
   }
 }
 
 .headerPositionFix {
   position: absolute;
   top: 0;
+}
+
+@keyframes backgroundImageSlideIn {
+  0% {
+    opacity: 0;
+    right: -140px;
+  }
+  100% {
+    opacity: calc(1.5 * var(--background-height-coefficient));
+    right: -20px;
+  }
+}
+
+
+
+.mainContainer {
+  margin-top: 200px;
+  width: 100vw;
+  position: absolute;
+  height: 970px;
+  display: flex;
+  justify-content: center;
+  .titleContentContainer {
+    width: 80%;
+    animation: titleContentContainerSlideIn 1s forwards;
+    .verifiedCompanyName {
+      display: inline-flex;
+      background-color: white;
+      border-radius: 10px;
+      justify-content: center;
+      align-items: center;
+      padding: 7px;
+      gap: 5px;
+      transition: .3s all;
+      .companyName {
+        font-family: "main";
+        font-weight: bold;
+        font-size: 16px;
+        color: var(--color-main);
+        transition: .3s all;
+      }
+      .verifiedIcon {
+        width: 16px;
+        transition: .3s all;
+      }
+
+    }
+    .titleText {
+      margin-top: 10px;
+      font-size: 96px;
+      font-family: "main";
+      font-weight: bold;
+      line-height: 90px;
+      background: radial-gradient(var(--color-main-overlight), #fff);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .secondTextLine {
+      width: 300px;
+      height: 1px;
+      background-color: var(--color-main-dark);
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+    }
+    .secondText {
+      font-family: "main";
+      font-size: 20px;
+
+    }
+    .advantagesContainer {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      .advantagesPoint {
+        width: 16px;
+      }
+      .advantageBlock {
+        max-width: 380px;
+        display: flex;
+        align-items: center;
+        background-color: #ffffffbd;
+        padding: 20px;
+        border-radius: 10px;
+        gap: 15px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0px 5px 5px 0px rgba(0, 31, 131, 0.1);
+        .advantageIcon {
+          width: 60px;
+        }
+        .advantageText {
+          font-family: "main";
+          font-size: 22px;
+          color: var(--color-main-dark);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .mainContainer .titleContentContainer .advantagesContainer .advantageBlock {
+    padding: 20px;
+    max-width: 310px;
+    .advantageIcon { width: 32px; }
+    .advantageText { font-size: 18px; }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .mainContainer .titleContentContainer .advantagesContainer {
+    .advantageBlock {
+      .advantageIcon { width: 28px; }
+      .advantageText { font-size: 14px; }
+    }
+  }
+}
+@media screen and (max-width: 1050px) {
+  .mainContainer .titleContentContainer .advantagesContainer {
+  .advantagesPoint {display: none;}}
+}
+@media screen and (max-width: 990px) {.mainContainer .titleContentContainer .titleText{font-size: 78px;line-height: 72px;}}
+@media screen and (max-width: 720px) {.mainContainer .titleContentContainer .titleText{font-size: 58px;   line-height: 58px;}}
+@media screen and (max-width: 800px) {
+  .mainContainer {
+    margin-top: 160px;
+    height: 960px;
+    
+    .titleContentContainer {
+      width: 90%;
+      .verifiedCompanyName {
+        padding: 5px; gap: 3px;
+        .companyName {font-size: 12px;}
+        .verifiedIcon { width: 12px; }
+      }
+      .advantagesContainer {
+        flex-direction: column;
+        .advantageBlock {
+          max-width: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 530px) {
+  .mainContainer .titleContentContainer .titleText{ font-size: 38px; line-height: 35px; }
+  .mainContainer .titleContentContainer .secondText{ font-size: 16px; }
+  .mainContainer .titleContentContainer .secondTextLine{ width: 100%; }
+}
+
+
+@keyframes titleContentContainerSlideIn {
+  0% { opacity: 0; transform: translateY(50px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.downbarContainer {
+  position: fixed;
+  bottom: -80px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transition: all 1s;
+  .downbarArrowIcon {
+    transition: all .3s;
+    opacity: 0;
+    width: 32px;
+    animation: downbarArrowIconAnimation 1s infinite;
+  }
+  .downbarShadow {
+    position: absolute;
+    width: 600px;
+    height: 80px;
+    background: var(--color-main-dark);
+    z-index: -200;
+    filter: blur(70px);
+    bottom: 0;
+  }
+  .downbarContent {
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    width: 550px;
+    height: 80px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .downbarBlur {
+      position: absolute;
+      top: -10px; left: 0;
+    }
+    .downbarAdditionDecoEffect {
+      position: absolute;
+      bottom: -30px; 
+      width: 700px;
+      height: 80px;
+      background: #fff;
+      z-index: -200;
+      border-radius: 50%;
+    }
+    .downbarText {
+      transition: all .3s;
+      z-index: 100;
+      font-family: "main";
+      font-size: 24px;
+      color: var(--color-main-dark);
+      opacity: 0;
+    }
+  }
+
+  &.downbarSlideIn {
+    bottom: 0;
+    .downbarArrowIcon { opacity: 1; }
+    .downbarContent .downbarText { opacity: 1; }
+  }
+}
+
+@keyframes downbarArrowIconAnimation {
+  0% {
+    transform: translateY(5px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
 }
