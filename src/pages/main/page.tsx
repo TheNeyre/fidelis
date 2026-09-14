@@ -91,8 +91,11 @@ export default function MainPage () {
         <div className={styles.downbarBlur}> <ProgressiveLayerBlur width={"100vw"} height={"170px"}/> </div>
         <div className={styles.downbarAdditionDecoEffect}></div>
         <div className={styles.downbarText}>{"Подобрать себе автомобиль"}</div>
-        
       </div>
+    </div>
+
+    <div className={styles.addtitonContentContainer}>
+      
     </div>
     
 
