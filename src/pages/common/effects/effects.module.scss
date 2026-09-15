@@ -49,8 +49,8 @@
 
 .spawnAnimationWrapper {
   opacity: 0;
-  transform: translateY(200px);
-  transition: .5s all;
+  transform: translateY(70px);
+  transition: 1s all;
   &.spawn {
     opacity: 1;
     transform: translateY(0);

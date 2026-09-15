@@ -2,7 +2,7 @@ import Header from "../common/header/component";
 
 import styles from "./page.module.scss";
 
-import { ProgressiveLayerBlur } from "../common/effects/component";
+import { ProgressiveLayerBlur, SpawnAnimationWrapper } from "../common/effects/component";
 import { useEffect, useRef } from "react";
 
 import BitrixForm from "./components/form/component";
@@ -95,7 +95,9 @@ export default function MainPage () {
     </div>
 
     <div className={styles.addtitonContentContainer}>
-      
+      <SpawnAnimationWrapper>
+        <div className={styles.test}/>
+      </SpawnAnimationWrapper>
     </div>
     
 

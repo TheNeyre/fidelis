@@ -169,7 +169,7 @@
 @media screen and (max-width: 800px) {
   .mainContainer {
     margin-top: 160px;
-    height: 960px;
+    height: 700px;
     
     .titleContentContainer {
       width: 90%;
@@ -279,10 +279,12 @@
 }
 
 .addtitonContentContainer {
-  height: 200px;
+  height: 2000px;
   width: 100vw;
-  background: rgb(255, 255, 255);
+  box-sizing: border-box;
+  background: rgb(243, 243, 243);
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  box-shadow: 0px -5px 10px 0px rgba(0, 31, 131, 0.1);
+  box-shadow: 0px -5px 15px 0px rgba(0, 31, 131, 0.1);
+  padding: 100px;
 }
