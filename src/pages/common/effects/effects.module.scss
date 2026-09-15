@@ -1,5 +1,4 @@
 .progressiveLayerBlur {
-
   pointer-events: none;
   .blurLayer {
     position: absolute;
@@ -46,4 +45,14 @@
   -webkit-mask-image: linear-gradient(var(--progressiveBlur-blur-direction),
     transparent 45%, black 50%, black 100%);
 }
+}
+
+.spawnAnimationWrapper {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: .5s all;
+  &.spawn {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
