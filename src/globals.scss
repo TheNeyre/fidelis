@@ -13,10 +13,10 @@ body {
 :root {
   --background-height-coefficient: 1;
   --color-main: #0340DF;
-  --color-main-light: #336CFF;
+  --color-main-light: #1e5dfc;
   --color-main-overlight: #e8efff;
-  --color-main-background-gradient: #1d52ffb6;
-  --color-main-dark: #00103a;
+  --color-main-background-gradient: #023cfab6;
+  --color-main-dark: #142653;
   --color-main-light-opacity: #5e8cff27;
   --color-main-overdark: #060607;
 }
@@ -30,6 +30,11 @@ body {
   font-family: "main";
   src: url("../public/fonts/gothampro_light.ttf");
   font-weight: normal;
+}
+@font-face {
+  font-family: "main";
+  src: url("../public/fonts/gothampro_medium.ttf");
+  font-weight: 600;
 }
 
 ::-webkit-scrollbar {

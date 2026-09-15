@@ -8,7 +8,6 @@ import { useEffect, useRef } from "react";
 import BitrixForm from "./components/form/component";
 import CompanyInformation from "./components/information/component";
 import SearchAssortment from "./components/search/component";
-import TeamList from "./components/team/component";
 
 export default function MainPage () {
 
@@ -95,9 +94,7 @@ export default function MainPage () {
     </div>
 
     <div className={styles.addtitonContentContainer}>
-      <SpawnAnimationWrapper>
-        <div className={styles.test}/>
-      </SpawnAnimationWrapper>
+      <CompanyInformation/>
     </div>
     
 

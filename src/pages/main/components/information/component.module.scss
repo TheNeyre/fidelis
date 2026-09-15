@@ -1,0 +1,141 @@
+.companyInformationContainer {
+  padding: 100px;
+  .activityFieldsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .activityFields {
+      display: flex;
+      gap: 10px;
+      .additionActivityFields {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+      }
+    }
+    .activityFieldsTitle {
+      font-family: "main";
+      font-weight: bold;
+      font-size: 64px;
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 100px;
+      background: radial-gradient(var(--color-main), var(--color-main-light));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+    }
+  }
+  .activityFieldCard {
+    padding: 40px;
+    background: rgb(253, 253, 253);
+    box-shadow: 5px 5px 5px 0px rgba(0, 31, 131, 0.1);
+    border-radius: 20px;
+    .cardHeader {
+      display: inline-flex; gap: 10px;
+      font-family: "main";
+      font-weight: 600;
+      flex-direction: column;
+      .numer {
+        color: var(--color-main-light);
+        font-size: 20px;
+      }
+      .header {
+        background-color: var(--color-main-light);
+        color: white;
+        border-radius: 9999px;
+        padding: 2px; padding-left: 7px; padding-right: 7px;
+      }
+    }
+    .description {
+      font-family: "main";
+      margin-top: 10px;
+      font-size: 20px;
+    }
+    &.isMain {
+      position: relative;
+      height: 100%;
+      background: var(--color-main-light);
+      overflow: hidden;
+      .cardHeader {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        .numer { color: white }
+        .header { background-color: white; color: var(--color-main-light) }
+      }
+      .subHeader {
+        position: relative;
+        color: white;
+        font-size: 24px;
+        font-family: "main";
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .description { position: relative;color: white }
+      .image {
+        pointer-events: none;
+        width: 500px;
+        position: absolute;
+        bottom: 0; left: 0;
+        mix-blend-mode:hard-light;
+        opacity: 0.4;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .companyInformationContainer .activityFieldsContainer {
+    .activityFieldsTitle {
+      font-size: 54px;
+    }
+    .activityFields {
+      flex-direction: column;
+    }
+    .activityFieldCard {
+      &.isMain {.image {
+        transform: scaleX(-100%);
+        right: 0; left: auto;
+        width: 300px;
+        opacity: 0.2;
+      }}
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .companyInformationContainer{
+    padding: 50px;
+    .activityFieldsContainer {
+      .activityFieldsTitle {
+        font-size: 32px;
+        width: 400px;
+      }
+      .activityFields {
+        .additionActivityFields {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .companyInformationContainer {
+    padding: 25px;
+    .activityFieldsContainer {
+      .activityFieldsTitle {
+        font-size: 20px;
+        width: 250px;
+      }
+      .activityFieldCard {
+        .description {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

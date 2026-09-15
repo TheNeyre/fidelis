@@ -1,13 +1,6 @@
 {
   "short_name": "Fidelis",
   "name": "Fidelis Auto",
-  "icons": [
-    {
-      "src": "icons/header.svg",
-      "sizes": "16x16",
-      "type": "image/svg+xml"
-    }
-  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

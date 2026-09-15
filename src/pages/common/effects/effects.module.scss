@@ -50,7 +50,7 @@
 .spawnAnimationWrapper {
   opacity: 0;
   transform: translateY(70px);
-  transition: 1s all;
+  transition: var(--spawn-animation-wrapper-time) all ease;
   &.spawn {
     opacity: 1;
     transform: translateY(0);
