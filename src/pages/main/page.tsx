@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
 
 import BitrixForm from "./components/form/component";
 import CompanyInformation from "./components/information/component";
-import SearchAssortment from "./components/search/component";
+import SearchAssortment from "./components/assortment/component";
 
 export default function MainPage () {
 
