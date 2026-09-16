@@ -67,7 +67,6 @@ export const DropdownSelectorInput: React.FC<{
             {item} </li>
         )})}
       </ul> )}
-
     </div> ) }
 
   </div> )
