@@ -16,6 +16,8 @@ export const AutoList: React.FC<{
   </div> );
 
   return ( <div className={styles.autoListContainer}>
+    { isError && ( <div className={styles.error}> {"Возникла ошибка при загрузке"} </div> )}
+    { isLoading && ( <div className={styles.loading}> {"Загрузка"} </div> ) }
     { !isError && !isLoading && carList && carList
     .map((carData, index) => (<AutomodileCard data={carData} key={`auto-${index}`}/>)) }
   </div> )

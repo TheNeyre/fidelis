@@ -38,10 +38,10 @@ export default function SearchAssortment () {
     onModelSelect={(i)=>setModel(i)}
     onSetHasMileage={(i)=>setHasMileage(i)}
     />
-    <AutoList
+    {/* <AutoList
     list={upload?upload:[]}
     isError={isError}
     isLoading={isLoading}
-    />
+    /> */}
   </div> )
 }
