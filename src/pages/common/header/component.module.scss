@@ -39,14 +39,17 @@
     border-radius: 9999px;
     $headerBeforeElMargin: 5px;
     .headerElement {
+      a {
+        text-decoration: none;
+        color: var(--color-main);
+        cursor: pointer;
+        pointer-events: all;
+      }
       position: relative;
       transition: .1s ease all;
       font-family: "main";
       font-size: 18px;
       padding: 16px;
-      color: var(--color-main);
-      cursor: pointer;
-      pointer-events: all;
       border-radius: 9999px;
       &::before {
         content: "";
@@ -70,14 +73,18 @@
       margin-left: 14px;
     }
     .lastHeaderElement {
+      a {
+        text-decoration: none;
+        color: var(--color-main);
+        cursor: pointer;
+        pointer-events: all;
+      }
       position: relative;
       transition: .1s ease all;
       font-family: "main";
       font-size: 18px;
       padding: 16px;
       color: var(--color-main);
-      cursor: pointer;
-      pointer-events: all;
       animation-name: headerLastElScrollAnimations;
       animation-fill-mode: forwards;
       animation-range: 0px 100px;

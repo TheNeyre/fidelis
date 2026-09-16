@@ -1,14 +1,12 @@
 import { Children, useEffect, useRef, useState } from "react";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import styles from "./effects.module.scss";
 
-interface ProgressiveLayerBlurProps {
+export const ProgressiveLayerBlur: React.FC<{
   width: number|string,
   height: number|string,
-  blurDirection?: string,
-}
-
-export const ProgressiveLayerBlur: React.FC<ProgressiveLayerBlurProps>
-= ({ width, height, blurDirection = "to bottom"}) => {
+  blurDirection?: string,}>
+  = ({ width, height, blurDirection = "to bottom"}) => {
   const validDirectionList = [
     "to top", "to bottom", "to left", "to right",
     "to bottom right", "to bottom left",
@@ -26,7 +24,12 @@ export const ProgressiveLayerBlur: React.FC<ProgressiveLayerBlurProps>
   </div> )
 }
 
-export const SpawnAnimationWrapper: React.FC<{children: React.ReactElement, time?: number, delay?: number}> = ({children, time = .8, delay=0}) => {
+export const SpawnAnimationWrapper: React.FC<{
+  children: React.ReactElement,
+  time?: number,
+  delay?: number,
+  onSpawn?: () => void | null}>
+  = ({children, time = .8, delay=0, onSpawn = null}) => {
   const spawnerRef = useRef<HTMLDivElement>(null);
   const getCssVariables = () => {return {'--spawn-animation-wrapper-time': `${time}s`,} as React.CSSProperties}
   useEffect(()=>{
@@ -36,6 +39,7 @@ export const SpawnAnimationWrapper: React.FC<{children: React.ReactElement, time
       const bottomTrigger = window.innerHeight*0.8;
       const currentTop = spawner.getBoundingClientRect().top;
       if (currentTop < bottomTrigger) {
+        if (onSpawn) onSpawn();
         if (delay != 0) setTimeout(()=>spawner.classList.add(styles.spawn), delay*1000);
         else spawner.classList.add(styles.spawn);
       }
@@ -47,3 +51,25 @@ export const SpawnAnimationWrapper: React.FC<{children: React.ReactElement, time
     {children}
   </div> )
 }
+
+export const AnimatedNumber: React.FC<{
+  to: number,
+  from: number,
+  duration: number,
+  start?: boolean,}>
+  = ({to, from, duration, start = true}) => {
+
+    const count = useMotionValue(from);
+    const rounded = useTransform(count, latest => Math.round(latest));
+
+    useEffect(()=>{
+      if (!start) return;
+      const animation = animate(count, to, {
+        duration,
+        ease: 'easeOut',
+      }); return () => animation.stop();
+    }, [to, duration, count, start]);
+
+    return ( <motion.span>{rounded}</motion.span> )
+
+  }

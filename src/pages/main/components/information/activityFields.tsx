@@ -21,7 +21,7 @@ export default function CompanyActivityFields () {
   }
 
   return (
-  <div className={styles.activityFieldsContainer}>
+  <div className={styles.activityFieldsContainer} id="companyInformation">
     <SpawnAnimationWrapper>
       <div className={styles.activityFieldsTitle}>
       {"Пять направлений работы нашего центра"}
@@ -53,7 +53,7 @@ export default function CompanyActivityFields () {
             },{
               numer: 5,
               header: "Комерческие продажи",
-              description: "Поставки для бизнеса, корпоративные автопарки, индивидуальные решения"
+              description: "Поставки для бизнеса, корпоративные автопарки, индивидуальные решения."
             }]
             .map((fieldData, index) => ( <ActivityFieldCard key={`activity-field-${index}`}
               numer={fieldData.numer} header={fieldData.header} description={fieldData.description}/> ))

@@ -226,7 +226,9 @@
     filter: blur(70px);
     bottom: 0;
   }
+  a { text-decoration: none; }
   .downbarContent {
+    
     cursor: pointer;
     background: rgb(255, 255, 255);
     width: 550px;

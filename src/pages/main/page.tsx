@@ -86,11 +86,13 @@ export default function MainPage () {
     <div className={styles.downbarContainer}>
       <div className={styles.downbarShadow}></div>
       <img src="icons/arrow-down.svg" alt="arrow-down-icon" className={styles.downbarArrowIcon}/>
-      <div className={styles.downbarContent}>
-        <div className={styles.downbarBlur}> <ProgressiveLayerBlur width={"100vw"} height={"170px"}/> </div>
-        <div className={styles.downbarAdditionDecoEffect}></div>
-        <div className={styles.downbarText}>{"Подобрать себе автомобиль"}</div>
-      </div>
+      <a href="#assortment">
+        <div className={styles.downbarContent}>
+          <div className={styles.downbarBlur}> <ProgressiveLayerBlur width={"100vw"} height={"170px"}/> </div>
+          <div className={styles.downbarAdditionDecoEffect}></div>
+          <div className={styles.downbarText}>{"Подобрать себе автомобиль"}</div>
+        </div>
+      </a>
     </div>
 
     <div className={styles.addtitonContentContainer}>

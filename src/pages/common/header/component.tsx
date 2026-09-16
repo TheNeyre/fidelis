@@ -53,11 +53,11 @@ export default function Header () {
     <img src="/icons/header.svg" alt="fidelis-header-logo" className={styles.logo}/>
     
     <ul className={styles.header} ref={headerRef}>
-      <li className={`${styles.headerElement} ${styles.firstHeaderElement}`}> {"главная"} </li>
-      <li className={styles.headerElement}> {"о нас"} </li>
-      <li className={styles.headerElement}> {"ассортимент"} </li>
-      <li className={styles.headerElement}> {"контакты"} </li>
-      <li className={` ${styles.lastHeaderElement}`}> <p className={styles.lastHeaderElementContent}>{"связаться"}</p>
+      <li className={`${styles.headerElement} ${styles.firstHeaderElement}`}> <a href="#mai">{"главная"}</a> </li>
+      <li className={styles.headerElement}> <a href="#companyInformation">{"о нас"}</a> </li>
+      <li className={styles.headerElement}> <a href="#assortment">{"ассортимент"}</a> </li>
+      <li className={styles.headerElement}> <a href="#contacts">{"контакты"}</a> </li>
+      <li className={` ${styles.lastHeaderElement}`}> <p className={styles.lastHeaderElementContent}><a href="/#form">{"связаться"}</a></p>
       <img src="/icons/arrow-right.svg" alt="contact-us-icon" className={styles.contactUsIcon}/> </li>
       <div className={styles.headerSelector}/>
     </ul>
