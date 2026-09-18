@@ -1,13 +1,15 @@
 import styles from "./component.module.scss";
 import { useState, useEffect, useRef } from "react";
-import { DropdownSelectorInput } from "../../../common/dropdown/component";
+import { DropdownSelectorInput } from "./dropdown/component";
 import { Car } from "./interfaces";
 export const SearchFilters: React.FC<{
-  list: Array<Car>,
+  brandList: string[],
+  modelList: string[],
   onSetHasMileage: (hasMileage: boolean) => void | null,
   onBrandSelect: (brand: string) => void | null,
   onModelSelect: (model: string) => void | null,
-}> = ({list, onSetHasMileage = null, onBrandSelect = null, onModelSelect = null}) => {
+  isError: boolean, isLoading: boolean,
+}> = ({brandList, modelList, onSetHasMileage = null, onBrandSelect = null, onModelSelect = null, isError, isLoading}) => {
 
   const [ hasMileage, setHasMileage ] = useState<boolean>(false);
 
@@ -38,7 +40,20 @@ export const SearchFilters: React.FC<{
     </div>
 
     <div className={styles.dropdownFilters}>
-      
+      <div className={styles.dropdownContainer}>
+        <div className={styles.dropdownTitle}>{"МАРКА АВТО"}</div>
+        <DropdownSelectorInput options={brandList}
+        placeholder={"Введите желаемый бренд"}
+        isError={isError} isLoading={isLoading}
+        />
+      </div>
+      <div className={styles.dropdownContainer}>
+        <div className={styles.dropdownTitle}>{"МОДЕЛЬ"}</div>
+        <DropdownSelectorInput options={modelList}
+        placeholder={"Введите модель авто"}
+        isError={isError} isLoading={isLoading}
+        />
+      </div>
     </div>
 
   </div> )

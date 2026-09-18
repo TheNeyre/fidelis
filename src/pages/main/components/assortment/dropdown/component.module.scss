@@ -1,0 +1,82 @@
+
+.dropdownContainer {
+  position: relative;
+  box-sizing: border-box;
+  .dropdownInput {
+    width: 300px;
+    position: relative;
+    z-index: 200;
+    background: white;
+    height: 50px;
+    border-radius: 10px;
+    padding: 15px;
+    font-family: "main";
+    background: transparent;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+    transition: .15s all ease;
+    &:focus {
+      outline: none;
+      border-color: var(--color-main);
+    }
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.75)
+    }
+    &.selected {
+      border-color: var(--color-main);
+    }
+  }
+  .dropdown {
+    position: absolute;
+    max-height: 0;
+    transition: all .25s ease-out;
+    pointer-events: none;
+    opacity: 0;
+    border-radius: 10px;
+    border: 1px rgba(0, 0, 0, 0.2) solid;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: scroll;
+    top: calc(100% + 10px);
+    font-family: "main";
+    background-color: rgba(255, 255, 255);
+    .empty, .error { color: #fa4040; padding: 15px; }
+    .loading { color: #3b3bf8; }
+    .dropdownList {
+      position: relative;
+      list-style: none;
+      margin: 0; padding: 0;
+      padding-top: 10px; padding-bottom: 10px;
+      .dropdownItem {
+        padding: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        transition: .05s all ease;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+          color: var(--color-main);
+          background-color: var(--color-main-light-opacity);
+        }
+      }
+      .dropdownResetItem {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: rgb(250, 64, 64);
+        transition: .15s all ease;
+        padding: 5px;
+        &:hover {
+          color: rgb(255, 41, 41);
+          background: rgba(255, 94, 94, 0.164);
+          border-radius: 5px;
+        }
+        .closeIcon { width: 12px; margin-left: auto; margin-right: 2px; }
+      }
+    }
+    &.open {
+      max-height: 150px;
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
