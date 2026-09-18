@@ -10,29 +10,32 @@
     border-radius: 10px;
     padding: 15px;
     font-family: "main";
-    background: transparent;
-    border: 1px rgba(0, 0, 0, 0.2) solid;
+    background: rgba(0, 0, 0, 0.025);
+    border: 1px rgba(0, 0, 0, 0.5) solid;
     transition: .15s all ease;
     &:focus {
       outline: none;
       border-color: var(--color-main);
+      background: var(--color-main-light-opacity);
     }
     &::placeholder {
       color: rgba(0, 0, 0, 0.75)
     }
     &.selected {
       border-color: var(--color-main);
+      background: var(--color-main-light-opacity);
     }
     &:disabled {
       pointer-events: none;
-      border: 1px rgba(0, 0, 0, 0.1) dashed;
+      border: 1px rgba(0, 0, 0, 0.25) dashed;
       &::placeholder {
-      color: rgba(0, 0, 0, 0.15);
+      color: rgba(0, 0, 0, 0.3);
       }
     }
   }
   .dropdown {
     position: absolute;
+    z-index: 1000;
     max-height: 0;
     top: calc(100% + 10px);
     transition: all .25s ease-out;

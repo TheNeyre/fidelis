@@ -128,13 +128,14 @@
 
 .autoListContainer {
   position: relative;
+  display: flex;
   width: 100vw;
-  max-height: 2500px;
-  min-height: 100px;
-  padding: 100px;
+  max-width: 1400px;
   padding-top: 0; padding-bottom: 0;
   margin-top: 20px;
   box-sizing: border-box;
+  justify-content: center;
+  flex-direction: column;
   .error {
     position: relative;
     width: 100%;
@@ -155,10 +156,11 @@
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    border: 1px dashed #fa4040;
-    background: #fa404018;
+    border: 1px dashed #646464;
+    background: #66666618;
     font-family: "main";
-    color: #fa4040;
+    color: #272727;
+    animation: LoadingFrame 1s infinite;
   }
   .empty {
     width: 100%;
@@ -167,20 +169,188 @@
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    border: 1px dashed #fa4040;
-    background: #fa404018;
+    border: 1px dashed #646464;
+    background: #66666618;
     font-family: "main";
-    color: #fa4040;
+    color: #272727;
+  }
+  .autoList {
+    max-height: 2500px;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    margin-left: 10px; margin-right: 10px;
+    .automobileCard {
+      --auto-card-margin: 5px;
+      box-sizing: border-box;
+      width: calc(100% - var(--auto-card-margin) * 2);
+      height: calc(100% - var(--auto-card-margin) * 2 );
+      margin: var(--auto-card-margin);
+      background: white;
+      box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      .cardImageBlock {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+        overflow: hidden;
+        .characteristic {
+          position: absolute;
+          z-index: 100;
+          padding: 15px;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+          gap: 2px;
+          font-family: "main";
+          color: rgba(255, 255, 255, 0.7);
+          transform: translateY(100px); 
+          opacity: 0;
+          transition: .3s all ease;
+          .characteristicValue {
+            color: var(--color-main-overlight);
+          }
+        }
+        .cardImage {
+          width: 100%;
+          height: 125%;
+          pointer-events: none;
+        }
+        .cardGradient {
+          opacity: 0;
+          transition: .3s all ease;
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top,#011147, #00000000);
+        }
+        &:hover {
+          .characteristic {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          .cardGradient {
+            opacity: 1;
+          }
+        }
+      }
+      .priceBlock {
+        display: flex;
+        align-items: center;
+        .prices {
+          font-family: "main";
+          .normalPrice {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+          }
+          .loanPrice {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+          }
+          .rubleIcon {
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .buyButton {
+          margin-left: auto;
+          height: 100%;
+          text-decoration: none;
+          font-family: "main";
+          padding: 15px;
+          border-radius: 10px;
+          background: var(--color-main-light-opacity);
+          color: black;
+        }
+      }
+      .carTitle {
+        display: flex;
+        gap: 5px;
+        font-family: "main";
+        font-weight: bold;
+        align-items: flex-end;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        .brand { font-size: 25px; }
+        .model {
+          margin-left: auto;
+          margin-right: 5px;
+          position: relative;
+          font-size: 15px;
+          color: var(--color-main);
+          bottom: 2px;
+        }
+      }
+
+    }
+  }
+}
+@media screen and (max-width: 1100px) {
+  .autoListContainer {
+    padding: 0px;
+    max-width: 900px;
+    .autoList {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 @media screen and (max-width: 800px) {
   .autoListContainer {
-    padding: 50px; padding-top: 0; padding-bottom: 0;
+    padding: 0px;
+  }
+}
+@media screen and (max-width: 750px) {
+  .autoListContainer {
+    padding: 0px;
+    max-width: 400px;
+    .autoList {
+      grid-template-columns: 1fr;
+    }
   }
 }
 @media screen and (max-width: 480px) {
   .autoListContainer {
-    padding: 25px; padding-top: 0; padding-bottom: 0;
+    padding: 0;
     .error { font-size: 14px; } 
   }
 }
+@media screen and (max-width: 380px) {
+  .autoListContainer {
+    padding: 0;
+    .autoList .automobileCard .cardImageBlock {
+      height: 200px;
+      .cardImage {
+        height: 100%;
+      }
+    }
+    .autoList .automobileCard {
+      .cardImageBlock {
+        .characteristic {
+          font-size: 12px;
+        }
+      }
+      .priceBlock {
+        .prices {
+          .normalPrice { font-size: 20px;}
+          .loanPrice { font-size: 12px; }
+          .rubleIcon { width: 14px; }
+        }
+      }
+    }
+  }
+}
+@keyframes LoadingFrame {
+  0% { filter: brightness(200%);}
+  50% { filter: none;}
+  100% { filter: brightness(200%); }
+}
+

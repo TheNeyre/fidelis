@@ -33,8 +33,6 @@ export const SearchFilters: React.FC<{
     return () => window.removeEventListener("resize", updateMoverPosition);
   },[hasMileage]);
 
-  useEffect(() => {  }, [isModelFilterDisabled])
-
   return ( <div className={styles.searchFiltresContainer}>
 
     <div className={styles.filterMileage}>
@@ -47,14 +45,14 @@ export const SearchFilters: React.FC<{
       <div className={styles.dropdownContainer}>
         <div className={styles.dropdownTitle}>{"МАРКА АВТО"}</div>
         <DropdownSelectorInput options={brandList}
-        placeholder={"Введите желаемый бренд"}
+        placeholder={"Найдите желаемый бренд"}
         isError={isError} isLoading={isLoading}
         />
       </div>
       <div className={styles.dropdownContainer}>
         <div className={styles.dropdownTitle}>{"МОДЕЛЬ"}</div>
         <DropdownSelectorInput options={modelList}
-        placeholder={"Введите модель авто"}
+        placeholder={isModelFilterDisabled?"Выберите бренд авто":"Введите модель авто"}
         isError={isError} isLoading={isLoading}
         isDisabled={isModelFilterDisabled}
         />

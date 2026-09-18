@@ -169,7 +169,7 @@
 @media screen and (max-width: 720px) {.mainContainer .titleContentContainer .titleText{font-size: 58px;   line-height: 58px;}}
 @media screen and (max-width: 800px) {
   .mainContainer {
-    margin-top: 160px;
+    padding-top: 160px;
     height: 750px;
     
     .titleContentContainer {
@@ -285,7 +285,7 @@
   width: 100vw;
   min-height: 4000px;
   box-sizing: border-box;
-  background: rgb(243, 243, 243);
+  background: rgb(245, 245, 245);
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   box-shadow: 0px -5px 15px 0px rgba(0, 31, 131, 0.1);

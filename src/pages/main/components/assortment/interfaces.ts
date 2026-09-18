@@ -1,6 +1,8 @@
 export interface Car {
+  id: number,
   brand: string,
-  model: string
+  model: string,
+  year: number | string,
   gearbox: string,
   mileage: number,
   engineFuelType: string,
