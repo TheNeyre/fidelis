@@ -53,7 +53,7 @@ export default function MainPage () {
       </div>
     </div>
   
-    <div className={styles.mainContainer}>
+    <div className={styles.mainContainer} id="main">
       <div className={styles.titleContentContainer}>
         <div className={styles.verifiedCompanyName}>
           <img src="/icons/verify.svg" alt="verified-company-icon" className={styles.verifiedIcon}/>

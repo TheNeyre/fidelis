@@ -58,7 +58,8 @@
 
 
 .mainContainer {
-  margin-top: 200px;
+  padding-top: 200px;
+  margin-bottom: 250px;
   width: 100vw;
   height: 750px;
   display: flex;
@@ -281,8 +282,8 @@
 }
 
 .addtitonContentContainer {
-  height: 2000px;
   width: 100vw;
+  min-height: 4000px;
   box-sizing: border-box;
   background: rgb(243, 243, 243);
   border-top-left-radius: 50px;

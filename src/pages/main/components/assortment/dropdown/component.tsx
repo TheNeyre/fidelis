@@ -5,9 +5,13 @@ export const DropdownSelectorInput: React.FC<{
   options: Array<string>,
   placeholder?: string,
   onSelect?: (item: string) => void | null,
-  isError: boolean,
-  isLoading: boolean
-}> = ({options, onSelect = null, placeholder = "Введите текст..", isError, isLoading}) => {
+  isError?: boolean,
+  isLoading?: boolean,
+  isDisabled?: boolean,
+  dropdownName?: string,
+}> = ({options, onSelect = null, placeholder = "Введите текст..",
+  isError = false, isLoading = false, isDisabled = false, dropdownName = "DROPDOWN-DEFAULT"}) => {
+
   const [ filteredItems, setFilteredItems ] = useState<Array<string>>([]);
   const [ inputValue, setInputValue ] = useState<string>("");
   const [ isOpen, setIsOpen ] = useState<boolean>(false);
@@ -17,6 +21,11 @@ export const DropdownSelectorInput: React.FC<{
   const dropdownContainerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!dropdownInputRef.current) return;
+    dropdownInputRef.current.disabled = isDisabled;
+  }, [isDisabled]);
 
   useEffect(()=>{
     if (!dropdownRef.current || !dropdownInputRef.current) return;
@@ -30,7 +39,7 @@ export const DropdownSelectorInput: React.FC<{
 
   useEffect(()=>{
     const handleClickOutside = (event: MouseEvent) => 
-    {if (dropdownContainerRef.current && !dropdownContainerRef.current.contains(event.target as Node)) setIsOpen(false); else setIsOpen(true);}
+    {if (dropdownContainerRef.current && !dropdownContainerRef.current.contains(event.target as Node)) setIsOpen(false)}
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -70,6 +79,7 @@ export const DropdownSelectorInput: React.FC<{
     onChange={handleInputChange}
     onFocus={()=>setIsOpen(true)}
     placeholder={placeholder}
+    name={dropdownName}
     />
     { ( <div className={styles.dropdown} ref={dropdownRef}>
       {isLoading && ( <div className={styles.loading}>{"Загрузка.."}</div> )}

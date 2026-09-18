@@ -1,57 +1,64 @@
 .searchFiltresContainer {
+  position: relative;
   width: 100%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  .filterMileage {
+}
+
+.filterMileage {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+  border-radius: 10px;
+  background: transparent;
+  
+  .filterMileageButton {
+    height: 50px;
     position: relative;
-    border: 1px rgba(0, 0, 0, 0.2) solid;
-    border-radius: 10px;
+    font-family: "main";
+    font-weight: 600;
+    padding: 15px;
+    padding-left: 38px;
+    padding-right: 38px;
+    border: none;
     background: transparent;
-    .filterMileageButton {
-      height: 50px;
-      position: relative;
-      font-family: "main";
-      font-weight: 600;
-      padding: 15px;
-      padding-left: 30px;
-      padding-right: 30px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      color: black;
-      transition: all .3s;
-      &.selected {
-        color: white;
-      }
+    cursor: pointer;
+    color: black;
+    transition: all .3s;
+    &.selected {
+      color: white;
     }
-    .filterMileageMoverContainer {
-      position: absolute;
-      width: 100px;
-      inset: 0;
-      --filter-mover-offset-x: 0;
-      left: var(--filter-mover-offset-x);
-      box-sizing: border-box;
-      padding: 3px;
-      transition: all .25s;
-      .mover {
-        width: 100%;
-        height: 100%;
-        background: var(--color-main);
-        border-radius: 10px;
-      }
+  }
+  .filterMileageMoverContainer {
+    position: absolute;
+    width: 100px;
+    inset: 0;
+    --filter-mover-offset-x: 0;
+    left: var(--filter-mover-offset-x);
+    box-sizing: border-box;
+    padding: 3px;
+    transition: all .25s;
+    .mover {
+      width: 100%;
+      height: 100%;
+      background: var(--color-main);
+      border-radius: 10px;
     }
   }
 }
 
 .dropdownFilters {
+  position: relative;
   padding: 20px;
   display: flex;
   gap: 20px;
-  border: 1px rgba(0, 0, 0, 0.2) dashed;
+  border: 1px var(--color-main-light) dashed;
   border-radius: 20px;
+  justify-content: center;
   .dropdownContainer {
     display: flex;
     flex-direction: column;
@@ -67,15 +74,113 @@
 }
 
 .searchAssortmentContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   .searchAssortmentTitle {
     margin-top: 100px;
     margin-bottom: 50px;
-    width: 100%;
     text-align: center;
     font-size: 64px;
     font-family: "main";
     font-weight: bold;
     color: var(--color-main-light);
+  }
+  .searchAssortmentPositionFix1 {
+    position: relative;
+    z-index: 200;
+  }
+  .searchAssortmentPositionFix2 {
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .searchAssortmentContainer .searchAssortmentTitle { font-size: 32px; width: 350px;}
+  .dropdownFilters {
+    flex-direction: column;
+    .dropdownContainer {
+      align-items: flex-start;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .searchFiltresContainer {
+    gap: 5px;
+  }
+  .dropdownFilters {
+    border-color: rgba(0, 0, 0, 0);
+  }
+}
+@media screen and (max-width: 360px) {
+  .searchAssortmentContainer .searchAssortmentTitle { font-size: 24px; width: 300px;}
+  .dropdownFilters {
+    padding: 10px;
+    gap: 15px;
+  }
+  .filterMileage .filterMileageButton {
+    padding-left: 25px; padding-right: 25px;
+  }
+}
+
+
+.autoListContainer {
+  position: relative;
+  width: 100vw;
+  max-height: 2500px;
+  min-height: 100px;
+  padding: 100px;
+  padding-top: 0; padding-bottom: 0;
+  margin-top: 20px;
+  box-sizing: border-box;
+  .error {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px dashed #fa4040;
+    background: #fa404018;
+    font-family: "main";
+    color: #fa4040;
+  }
+  .loading {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px dashed #fa4040;
+    background: #fa404018;
+    font-family: "main";
+    color: #fa4040;
+  }
+  .empty {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: 1px dashed #fa4040;
+    background: #fa404018;
+    font-family: "main";
+    color: #fa4040;
+  }
+}
+@media screen and (max-width: 800px) {
+  .autoListContainer {
+    padding: 50px; padding-top: 0; padding-bottom: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .autoListContainer {
+    padding: 25px; padding-top: 0; padding-bottom: 0;
+    .error { font-size: 14px; } 
   }
 }

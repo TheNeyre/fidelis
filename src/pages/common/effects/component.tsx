@@ -36,7 +36,7 @@ export const SpawnAnimationWrapper: React.FC<{
     const spawner = spawnerRef.current;
     if (!spawnerRef || !spawner) return;
     const scrollCheck = () => {
-      const bottomTrigger = window.innerHeight*0.8;
+      const bottomTrigger = window.innerHeight*0.9;
       const currentTop = spawner.getBoundingClientRect().top;
       if (currentTop < bottomTrigger) {
         if (onSpawn) onSpawn();

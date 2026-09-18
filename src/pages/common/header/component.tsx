@@ -53,7 +53,7 @@ export default function Header () {
     <img src="/icons/header.svg" alt="fidelis-header-logo" className={styles.logo}/>
     
     <ul className={styles.header} ref={headerRef}>
-      <li className={`${styles.headerElement} ${styles.firstHeaderElement}`}> <a href="#mai">{"главная"}</a> </li>
+      <li className={`${styles.headerElement} ${styles.firstHeaderElement}`}> <a href="#main">{"главная"}</a> </li>
       <li className={styles.headerElement}> <a href="#companyInformation">{"о нас"}</a> </li>
       <li className={styles.headerElement}> <a href="#assortment">{"ассортимент"}</a> </li>
       <li className={styles.headerElement}> <a href="#contacts">{"контакты"}</a> </li>

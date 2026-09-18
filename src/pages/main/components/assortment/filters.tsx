@@ -8,15 +8,15 @@ export const SearchFilters: React.FC<{
   onSetHasMileage: (hasMileage: boolean) => void | null,
   onBrandSelect: (brand: string) => void | null,
   onModelSelect: (model: string) => void | null,
-  isError: boolean, isLoading: boolean,
-}> = ({brandList, modelList, onSetHasMileage = null, onBrandSelect = null, onModelSelect = null, isError, isLoading}) => {
+  isError: boolean, isLoading: boolean, isModelFilterDisabled: boolean
+}> = ({brandList, modelList, onSetHasMileage = null, onBrandSelect = null, onModelSelect = null, isError, isLoading, isModelFilterDisabled }) => {
 
   const [ hasMileage, setHasMileage ] = useState<boolean>(false);
-
   useEffect(()=>{
     const selectors = Array.from(document.querySelectorAll<HTMLButtonElement>(`.${styles.filterMileageButton}`));
     const currentSelector = hasMileage?selectors[1]:selectors[0];
     const secondSelector = hasMileage?selectors[0]:selectors[1];
+
     const updateMoverPosition = () => {
       const mover = document.querySelector<HTMLDivElement>(`.${styles.filterMileageMoverContainer}`);
       const filters = document.querySelector<HTMLDivElement>(`.${styles.filterMileage}`);
@@ -27,9 +27,13 @@ export const SearchFilters: React.FC<{
       mover.style.setProperty("width", `${selectorWidth}px`);
       mover.style.setProperty("--filter-mover-offset-x", `${selectorOffset - filtersOffset}px`);
     }; updateMoverPosition();
+    window.addEventListener("resize", updateMoverPosition)
     currentSelector.classList.add(styles.selected);
     secondSelector.classList.remove(styles.selected);
+    return () => window.removeEventListener("resize", updateMoverPosition);
   },[hasMileage]);
+
+  useEffect(() => {  }, [isModelFilterDisabled])
 
   return ( <div className={styles.searchFiltresContainer}>
 
@@ -52,6 +56,7 @@ export const SearchFilters: React.FC<{
         <DropdownSelectorInput options={modelList}
         placeholder={"Введите модель авто"}
         isError={isError} isLoading={isLoading}
+        isDisabled={isModelFilterDisabled}
         />
       </div>
     </div>

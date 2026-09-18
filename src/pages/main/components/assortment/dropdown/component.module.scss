@@ -5,7 +5,6 @@
   .dropdownInput {
     width: 300px;
     position: relative;
-    z-index: 200;
     background: white;
     height: 50px;
     border-radius: 10px;
@@ -24,10 +23,18 @@
     &.selected {
       border-color: var(--color-main);
     }
+    &:disabled {
+      pointer-events: none;
+      border: 1px rgba(0, 0, 0, 0.1) dashed;
+      &::placeholder {
+      color: rgba(0, 0, 0, 0.15);
+      }
+    }
   }
   .dropdown {
     position: absolute;
     max-height: 0;
+    top: calc(100% + 10px);
     transition: all .25s ease-out;
     pointer-events: none;
     opacity: 0;
@@ -36,7 +43,6 @@
     width: 100%;
     box-sizing: border-box;
     overflow: scroll;
-    top: calc(100% + 10px);
     font-family: "main";
     background-color: rgba(255, 255, 255);
     .empty, .error { color: #fa4040; padding: 15px; }
@@ -79,4 +85,7 @@
       opacity: 1;
     }
   }
+}
+@media screen and (max-width: 360px) {
+  .dropdownContainer .dropdownInput { width: 250px; }
 }
