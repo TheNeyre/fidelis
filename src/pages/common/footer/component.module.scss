@@ -1,0 +1,42 @@
+.footerContainer {
+  margin-top: 250px;
+  font-family: "main";
+  display: flex;
+  justify-content: flex-start;
+  min-height: 400px;
+  background: white;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  .footerSection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .sectionTitle {
+      margin: 0; font-weight: 600;
+      color: var(--color-main);
+    }
+    .sectionElements {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      .sectionElement {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        .elementText {
+          text-decoration: none;
+          color: var(--color-main-dark);
+          font-size: 20px;
+        }
+        .elementIcon {
+          width: 20px;
+          filter: invert(9%) sepia(28%) saturate(7341%) hue-rotate(204deg) brightness(70%) contrast(65%);
+        }
+      }
+    }
+  }
+}
