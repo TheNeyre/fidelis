@@ -1,29 +1,85 @@
 
 .bitrixFormContainer {
-  margin-top: 150px;
+  padding-top: 150px;
   display: flex;
   width: 100%;
   justify-content: center;
   .bitrixFormContainerContent {
     display: flex;
     width: 1400px;
+    flex-direction: row-reverse;
     justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.425);
+    padding: 20px;
+    border-radius: 20px;
     .bitrixFormTitle {
       font-size: 54px;
       font-family: "main";
       font-weight: bold;
       max-width: 800px;
+      text-align: right;
+      color: var(--color-main);
+      margin-right: 20px;
     }
     .bitrixForm {
       padding: 40px;
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 10px;
       background: white;
       border-radius: 20px;
       box-shadow: 0px 5px 5px 0px #0012331c;
       border: 1px solid #00123323;
+      width: 350px;
+      .submitButton {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        background-color: var(--color-main-light);
+        border-radius: 15px;
+        font-family: "main";
+        color: white;
+        font-weight: 600;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: all .3s ease;
+        &:hover {
+          background-color: #467bff;
+        }
+      }
+      .submitButtonSuccess {
+        background: #d4ffd785;
+        color: rgb(17, 94, 2);
+        border: 1px dashed #6dff6d;
+        pointer-events: none;
+      }
+      .submitButtonError {
+        background: #ffd4d485;
+        color: rgb(94, 2, 2);
+        border: 1px dashed #ff6d6d;
+        pointer-events: none;
+      }
+      .submitButtonLoading {
+        background: #ebebeb85;
+        color: rgb(63, 63, 63);
+        border: 1px dashed #b4b4b4;
+        pointer-events: none;
+      }
+      .formStatus {
+        font-family: "main";
+        font-weight: 600;
+        color: black;
+        transition: all .3s ease;
+        margin-bottom: 10px;
+      }
+      .formStatusError {
+        color: rgb(255, 114, 114);
+      }
       .formInputContainer {
+        width: 100%;
         position: relative;
         .additionText {
           position: absolute;
@@ -38,23 +94,26 @@
           padding-left: 5px;
           padding-right: 5px;
         }
-        .formInput:focus ~ .additionText {
-          top: -6px;
-          color: var(--color-main);
-          font-weight: 600;
-          font-size: 12px;
-        }
         .formInput {
+          width: 100%;
           position: relative;
           padding: 10px 15px 10px 15px;
           border-radius: 10px;
           font-family: "main";
           border: 2px solid gray;
           transition: all .3s ease;
-          
-          &:focus {
+          outline: none;
+        }
+        &.focused {
+          .additionText {
+          top: -6px;
+          color: var(--color-main);
+          font-weight: 600;
+          font-size: 12px;
+          }
+          .formInput {
             outline: none;
-            border-color: var(--color-main-light);
+            border-color: var(--color-main-light); 
           }
         }
       }

@@ -32,6 +32,8 @@
     background: rgb(253, 253, 253);
     box-shadow: 5px 5px 5px 0px rgba(0, 31, 131, 0.1);
     border-radius: 20px;
+    border: 1px transparent solid;
+    transition: all .3s;
     .cardHeader {
       display: inline-flex; gap: 10px;
       font-family: "main";
@@ -82,6 +84,9 @@
         mix-blend-mode:hard-light;
         opacity: 0.4;
       }
+    }
+    &:hover {
+      border-color: var(--color-main-light);
     }
   }
 }
