@@ -10,7 +10,7 @@ export default function CompanyActivityFields () {
     isMain?: boolean
   }> = ({numer, header, description, subHeader = null, isMain = false}) => { return (
     <div className={`${styles.activityFieldCard} ${isMain?styles.isMain:""}`}>
-      { isMain && ( <img src="/imgs/car1.png" alt="activity-fields-car" className={styles.image}/> ) }
+      { isMain && ( <img src="/imgs/car.png" alt="activity-fields-car" className={styles.image}/> ) }
       <div className={styles.cardHeader}>
         <div className={styles.numer}>{`0${numer}`}</div>
         <div className={styles.header}>{header}</div>

@@ -1,4 +1,5 @@
 import Header from "../common/header/component";
+import Footer from "../common/footer/component";
 
 import styles from "./page.module.scss";
 
@@ -99,7 +100,10 @@ export default function MainPage () {
       <CompanyInformation/>
       <SearchAssortment/>
       <BitrixForm/>
+      <Footer/>
     </div>
+
+
     
 
   </>)
