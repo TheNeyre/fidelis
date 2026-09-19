@@ -98,6 +98,7 @@ export default function MainPage () {
     <div className={styles.addtitonContentContainer}>
       <CompanyInformation/>
       <SearchAssortment/>
+      <BitrixForm/>
     </div>
     
 

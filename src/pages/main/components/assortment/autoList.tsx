@@ -25,7 +25,6 @@ export const AutoList: React.FC<{
     }
 
   const AutomobileCard: React.FC<{data: Car}> = ({data}) => ( <div className={styles.automobileCard}>
-    
     <div className={styles.cardImageBlock}>
       <div className={styles.characteristic}>
         <div>Коробка: <span className={styles.characteristicValue}>{data.gearbox}</span></div>
@@ -40,12 +39,10 @@ export const AutoList: React.FC<{
       <div className={styles.cardGradient}/>
       <img src={`/imgs/cars/${data.id}.png`} alt={`car-${data.id}`} className={styles.cardImage}/>
     </div>
-
     <div className={styles.carTitle}>
       <span className={styles.brand}>{data.brand}</span>
       <span className={styles.model}>{data.model}</span>
     </div>
-
     <div className={styles.priceBlock}>
       <div className={styles.prices}>
         <div className={styles.normalPrice}>{`${data.price}`}<img src="/icons/ruble.svg" alt="rubble-icon" className={styles.rubleIcon}/></div>
@@ -53,9 +50,6 @@ export const AutoList: React.FC<{
       </div>
       <a href="/#form" className={styles.buyButton}>{"Связаться"}</a>
     </div>
-
-
-
   </div> );
 
   return ( <div className={styles.autoListContainer}>

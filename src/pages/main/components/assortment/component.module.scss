@@ -4,7 +4,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 20px;
 }
 
@@ -53,10 +53,9 @@
 
 .dropdownFilters {
   position: relative;
-  padding: 20px;
+
   display: flex;
   gap: 20px;
-  border: 1px var(--color-main-light) dashed;
   border-radius: 20px;
   justify-content: center;
   .dropdownContainer {

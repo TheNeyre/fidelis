@@ -1,0 +1,63 @@
+
+.bitrixFormContainer {
+  margin-top: 150px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  .bitrixFormContainerContent {
+    display: flex;
+    width: 1400px;
+    justify-content: space-between;
+    .bitrixFormTitle {
+      font-size: 54px;
+      font-family: "main";
+      font-weight: bold;
+      max-width: 800px;
+    }
+    .bitrixForm {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0px 5px 5px 0px #0012331c;
+      border: 1px solid #00123323;
+      .formInputContainer {
+        position: relative;
+        .additionText {
+          position: absolute;
+          top: 13px;
+          left: 10px;
+          font-family: "main";
+          font-size: 14px;
+          background: white;
+          border: 5px;
+          pointer-events: none;
+          transition: all .3s ease;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        .formInput:focus ~ .additionText {
+          top: -6px;
+          color: var(--color-main);
+          font-weight: 600;
+          font-size: 12px;
+        }
+        .formInput {
+          position: relative;
+          padding: 10px 15px 10px 15px;
+          border-radius: 10px;
+          font-family: "main";
+          border: 2px solid gray;
+          transition: all .3s ease;
+          
+          &:focus {
+            outline: none;
+            border-color: var(--color-main-light);
+          }
+        }
+      }
+    }
+  }
+}
