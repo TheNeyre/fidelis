@@ -13,11 +13,12 @@
     background-color: rgba(255, 255, 255, 0.425);
     padding: 20px;
     border-radius: 20px;
+    margin: 20px 40px;
     .bitrixFormTitle {
       font-size: 54px;
       font-family: "main";
       font-weight: bold;
-      max-width: 800px;
+      max-width: 600px;
       text-align: right;
       color: var(--color-main);
       margin-right: 20px;
@@ -116,6 +117,50 @@
             border-color: var(--color-main-light); 
           }
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .bitrixFormContainer {
+    .bitrixFormContainerContent {
+      padding: 40px;
+      width: auto;
+      flex-direction: column;
+      gap: 20px;
+
+      .bitrixFormTitle {
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  .bitrixFormContainer {
+    .bitrixFormContainerContent {
+      background: transparent;
+      padding: 0;
+      width: auto;
+      flex-direction: column;
+      gap: 20px;
+
+      .bitrixFormTitle {
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
+}
+@media screen and (max-width: 360px) {
+  .bitrixFormContainer {
+    .bitrixFormContainerContent {
+      margin: 5px;
+      .bitrixForm {
+        padding: 20px;
+        width: auto;
       }
     }
   }
