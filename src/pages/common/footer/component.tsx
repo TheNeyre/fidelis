@@ -1,9 +1,11 @@
 import styles from "./component.module.scss";
+import { useRef } from "react";
 
 interface FooterElement {
-  icon: string | null,
+  icon?: string | null,
   title: string,
-  link: string | null,
+  link?: string | null,
+  copytext?: string | null,
 }
 
 export default function Footer () {
@@ -30,54 +32,71 @@ export default function Footer () {
       {
         icon: "email",
         title: "info@fidelis-group.ru",
-        link: null,
+        copytext: "info@fidelis-group.ru"
       },
       {
         icon: "call",
         title: "8 (800) 777-60-54",
-        link: null,
+        copytext: "88007776054"
       },
     ],
     "Данные компании": [
       {
-        icon: null,
         title: "ИНН: 5507307581",
-        link: null, 
+        copytext: "5507307581"
       },
       {
-        icon: null,
         title: "КПП: 550701001",
-        link: null, 
+        copytext: "550701001"
       },
     ],
     "Адреса автосалонов": [
       {
         icon: "map",
         title: "644015, Омская область, г. Омск, ул. 22 декабря, д.89",
-        link: null,
+        copytext: "644015, Омская область, г. Омск, ул. 22 декабря, д.89"
       }
     ]
   }
+  const copiedTextBlockRef = useRef<HTMLDivElement>(null);
+  const copyText = (text: string | null | undefined) => {
+    if (!text) return;
+    if (!copiedTextBlockRef.current) return;
+    navigator.clipboard.writeText(text);
+    copiedTextBlockRef.current.classList.add(styles.copied);
+    setTimeout(()=>{copiedTextBlockRef.current?.classList.remove(styles.copied)}, 1000);
+  }
 
-  return ( <footer id="footer" className={styles.footerContainer}>
+  return ( <footer id="contacts" className={styles.footerContainer}>
 
-    {Object.entries(FOOTER_CONTENT).map(([sectionTitle, sectionContent]) => (
-      <div className={styles.footerSection}>
-        <h4 className={styles.sectionTitle}>{sectionTitle}</h4>
-        <ul className={styles.sectionElements}>
-          {sectionContent.map((footerElement, index) => (
-            <li key={index} className={styles.sectionElement}>
-              { footerElement.icon && ( <img src={`/icons/${footerElement.icon}.svg`} alt={`footer-element-${index}`} className={styles.elementIcon}/> ) }
-              { footerElement.link?( <a href={footerElement.link} target="_blank" rel="noopener noreferrer" className={styles.elementText}>
-                {footerElement.title}
-              </a> ):( <span className={styles.elementText}>
-                {footerElement.title}
-              </span> ) }
-            </li>
-          ))}
-        </ul>
+    <div className={styles.footerContent}>
+      {Object.entries(FOOTER_CONTENT).map(([sectionTitle, sectionContent]) => (
+        <div className={styles.footerSection}>
+          <h4 className={styles.sectionTitle}>{sectionTitle}</h4>
+          <ul className={styles.sectionElements}>
+            {sectionContent.map((footerElement, index) => (
+              <li key={index} className={styles.sectionElement}>
+                { footerElement.icon && ( <img src={`/icons/${footerElement.icon}.svg`} alt={`footer-element-${index}`} className={styles.elementIcon}/> ) }
+                { footerElement.link?( <a href={footerElement.link} target="_blank" rel="noopener noreferrer" className={styles.elementText}>
+                  {footerElement.title}
+                </a> ):( <span className={styles.elementText} onClick={()=>copyText(footerElement.copytext)}>
+                  {footerElement.title}
+                </span> ) }
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    
+    <div className={styles.footerEndtext}>{"ООО «ФИДЕЛИС МЕНЕДЖМЕНТ»"}</div>
+
+    <div className={styles.copiedTextPositionFix}>
+      <div className={styles.copiedTextBlock} ref={copiedTextBlockRef}>
+        {"Скопировано"}
       </div>
-    ))}
+    </div>
+
 
   </footer> )
 }

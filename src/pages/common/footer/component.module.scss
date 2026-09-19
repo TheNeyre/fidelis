@@ -2,39 +2,78 @@
   margin-top: 250px;
   font-family: "main";
   display: flex;
-  justify-content: flex-start;
-  min-height: 400px;
+  flex-direction: column;
+  align-items: center;
   background: white;
-  flex-wrap: wrap;
   padding: 40px;
-  gap: 40px;
-  .footerSection {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    .sectionTitle {
-      margin: 0; font-weight: 600;
-      color: var(--color-main);
+  .copiedTextPositionFix {
+    position: absolute;
+    .copiedTextBlock {
+      position: fixed;
+      bottom: 0;
+      left: 46%;
+      margin-left: auto;
+      margin-right: auto;
+      background: black;
+      z-index: 9999;
+      color: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.473);
+      opacity: 0;
+      transition: all .5s;
+      pointer-events: none;
+      &.copied {
+        opacity: 1;
+      }
     }
-    .sectionElements {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+  }
+  .footerEndtext {
+    margin-top: auto;
+    color: var(--color-main);
+    opacity: 0.5;
+    margin-top: 100px;
+    font-size: 12px;
+  }
+  .footerContent {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    .footerSection {
       display: flex;
       flex-direction: column;
-      gap: 5px;
-      .sectionElement {
+      gap: 10px;
+      .sectionTitle {
+        margin: 0; font-weight: 600;
+        color: var(--color-main);
+      }
+      .sectionElements {
+        list-style: none;
+        padding: 0;
+        margin: 0;
         display: flex;
-        align-items: center;
+        flex-direction: column;
         gap: 5px;
-        .elementText {
-          text-decoration: none;
-          color: var(--color-main-dark);
-          font-size: 20px;
-        }
-        .elementIcon {
-          width: 20px;
-          filter: invert(9%) sepia(28%) saturate(7341%) hue-rotate(204deg) brightness(70%) contrast(65%);
+        .sectionElement {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          .elementText {
+            text-decoration: none;
+            color: var(--color-main-dark);
+            font-size: 20px;
+            transition: all .15s ease;
+            &:hover {
+              color: var(--color-main)
+            }
+          }
+          .elementIcon {
+            width: 20px;
+            filter: invert(9%) sepia(28%) saturate(7341%) hue-rotate(204deg) brightness(70%) contrast(65%);
+          }
         }
       }
     }
